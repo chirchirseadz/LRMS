@@ -2,14 +2,12 @@
 
 @section('content')
 
-<div class="row m-3">
-    <div class="col-md-12 text-right">
-        <!-- Assuming $appartmentId contains the ID of the apartment -->
-        <a class="btn btn-primary" href="{{ route('room.create', ['appartment_id' => $appartment->id]) }}">
-            <i class="fa fa-plus mr-2" aria-hidden="true"></i>Add Room
-        </a>
+    <div class="row m-3">
+        <div class="col-md-12 text-right">
+       
+         <a  class="btn btn-primary" href="{{route('appartment.create')}}"> <i class="fa fa-plus mr-2" aria-hidden="true"></i>Appartment</a>
+        </div>
     </div>
-</div>
 
 <div class="card">
     <div class="card-header">
@@ -27,20 +25,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($rooms as $room)
+                @foreach ($appartments as $appartment)
                 <tr>
                     <td>NO:</td>
-                    <td>{{$room->name}}</td>
+                    <td>{{$appartment->name}}</td>
                     <td>
                         <div class="margin">
                             <div class="btn-group">
-                                <a href="{{route('room.edit', $room->id)}}">
+                                <a href="{{route('appartment.edit', $appartment->id)}}">
                                     <button type="button" class="btn btn-xs btn-default"><i class="fa fa-edit"></i>
                                         Edit</button>
                                 </a>
                             </div>
                             <div class="btn-group">
-                                <a href="{{route('room.show', $room->id)}}">
+                                <a href="{{route('appartment.show', $appartment->id)}}">
                                     <button type="button" class="btn btn-xs btn-info"><i class="fa fa-eye"></i>
                                         View</button>
                                 </a>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
+use App\Models\Rooms;
 use Illuminate\Http\Request;
 
 class RoomsController extends Controller
@@ -12,6 +14,13 @@ class RoomsController extends Controller
     public function index()
     {
         //
+        $rooms = Rooms::orderBy('created_at', 'desc')->get();
+        $pageData = [
+            'title' => 'rooms List', 
+            'rooms' => $rooms 
+
+        ];
+        return view('rooms.index', $pageData);
     }
 
     /**
@@ -20,6 +29,20 @@ class RoomsController extends Controller
     public function create()
     {
         //
+        $categories = Categories::all();
+
+        $appartmentId = request()->query('appartment_id');
+
+        $pageData = [
+            'title' => 'Create Room', 
+            'categories' => $categories,
+            'appartmentId' =>   $appartmentId
+        ];
+
+    
+        return view('rooms.create', $pageData);
+
+
     }
 
     /**
@@ -28,6 +51,24 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         //
+
+        // dd($request);
+        $request->validate([
+            'name' => 'required',
+            'amount'  => 'required|string',
+            'category' => 'required|integer',
+            'appartment_id' => 'required|integer',
+        ]);
+
+        $data = new Rooms();
+        $data->category_id = $request->category;
+        $data->appartments_id = $request->appartment_id;
+        $data->name = $request->name;
+        $data->amount = $request->amount;
+        $data->save();
+        toastr()->success('Successfully added a room');
+        return redirect(route('appartment.show', $request->appartment_id));
+
     }
 
     /**

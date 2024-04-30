@@ -62,13 +62,17 @@ class AppartmentController extends Controller
     {
 
         $data = Appartments::find($id);
-        $rooms = $data->Rooms();
+        $rooms = $data->Rooms;
 
         $pageData = [
             'title' => strtoupper($data->name), 
             'appartment' => $data,
             'rooms' => $rooms
         ];
+
+        // dd($rooms);
+
+        // dd($pageData);
         return view('appartment.show', $pageData);
        
     }

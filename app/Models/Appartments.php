@@ -9,6 +9,9 @@ class Appartments extends Model
 {
     use HasFactory;
 
+    protected $table = 'appartments';
+    protected $primary_key = 'id';
+
     public function Rooms() {
         return $this->hasMany(Rooms::class);
     }

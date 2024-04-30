@@ -2,14 +2,12 @@
 
 @section('content')
 
-<div class="row m-3">
-    <div class="col-md-12 text-right">
-        <!-- Assuming $appartmentId contains the ID of the apartment -->
-        <a class="btn btn-primary" href="{{ route('room.create', ['appartment_id' => $appartment->id]) }}">
-            <i class="fa fa-plus mr-2" aria-hidden="true"></i>Add Room
-        </a>
+    <div class="row m-3">
+        <div class="col-md-12 text-right">
+       
+         <a  class="btn btn-primary" href="{{route('room.create')}}"> <i class="fa fa-plus mr-2" aria-hidden="true"></i>Rooms</a>
+        </div>
     </div>
-</div>
 
 <div class="card">
     <div class="card-header">
