@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\AppartmentController;
+use App\Http\Controllers\CashPaymentController;
+use App\Http\Controllers\LandLordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Roles\RoleController;
-use App\Http\Controllers\RoomsController;
+use App\Http\Controllers\FlatsController;
+use App\Http\Controllers\TenantController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +39,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
 Route::controller(RoleController::class)->group( function () {
     Route::get('/roles/index/', 'index')->name('roles.index');
     Route::get('/roles/{id}/edit/', 'edit')->name('roles.edit');
@@ -43,7 +48,11 @@ Route::controller(RoleController::class)->group( function () {
 })->middleware('auth');
 
 Route::resource('appartment', AppartmentController::class)->middleware('auth');
-Route::resource('room', RoomsController::class)->middleware('auth');
+Route::resource('flat', FlatsController::class)->middleware('auth');
+Route::resource('user', UserController::class)->middleware('auth');
+Route::resource('landlord', LandLordController::class)->middleware('auth');
+Route::resource('tenant', TenantController::class)->middleware('auth');
+Route::resource('cash', CashPaymentController::class)->middleware('auth');
 
 // Route::controller(AppartmentController::class)->group(  function () {
    

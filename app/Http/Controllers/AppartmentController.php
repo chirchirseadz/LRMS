@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appartments;
+use App\Models\Categories;
+use App\Models\LandLord;
 use App\Models\Rooms;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 
 class AppartmentController extends Controller
@@ -16,12 +20,11 @@ class AppartmentController extends Controller
         //
         $appartments = Appartments::orderBy('created_at', 'desc')->get();
         $pageData = [
-            'title' => 'Appartments List', 
-            'appartments' => $appartments 
+            'title' => 'Appartments List',
+            'appartments' => $appartments
 
         ];
         return view('appartment.index', $pageData);
-
     }
 
     /**
@@ -30,12 +33,23 @@ class AppartmentController extends Controller
     public function create()
     {
         //
+        $user = User::find(auth()->user()->id);
+        if (!$user->can('create apartments')) {
+            toastr()->error('OOPS ! No permissions');
+            return redirect()->back();
+        }
+        
+        $flatId = request()->query('flatId');
+        $categories = Categories::all();
 
         $pageData = [
-            'title' => 'Create Appartment', 
-        
+            'title' => 'Create Appartment',
+            'flatId' => $flatId,
+            'categories' => $categories
         ];
+
         return view('appartment.create', $pageData);
+
     }
 
     /**
@@ -43,16 +57,30 @@ class AppartmentController extends Controller
      */
     public function store(Request $request)
     {
+  
+
+        $user = User::find(auth()->user()->id);
+        if (!$user->can('create apartments')) {
+            toastr()->error('OOPS ! No permissions');
+            return redirect()->back();
+        }
         
         $request->validate([
             'name' => 'required',
+            'flatId' => 'required',
+            'category' => 'required',
+            'amount' => 'required'
         ]);
 
         $data = new Appartments();
         $data->name = $request->name;
+        $data->flats_id = $request->flatId;
+        $data->categories_id = $request->category;
+        $data->amount = $request->amount;
         $data->save();
+
         toastr()->success('Successfully added appartment');
-        return redirect(route('appartment.index'));
+        return redirect(route('flat.show', $request->flatId));
     }
 
     /**
@@ -60,21 +88,28 @@ class AppartmentController extends Controller
      */
     public function show(string $id)
     {
+    
+        $user = User::find(auth()->user()->id);
+
+        if (!$user->can('view apartments')) {
+            toastr()->error('OOPS ! No permissions');
+            return redirect()->back();
+        }
 
         $data = Appartments::find($id);
-        $rooms = $data->Rooms;
+        $tenant = $data->Tenants;
 
         $pageData = [
-            'title' => strtoupper($data->name), 
+            'title' => $data->name . ' Details & Tenants',
             'appartment' => $data,
-            'rooms' => $rooms
+            'tenant' => $tenant
+            
         ];
 
-        // dd($rooms);
-
-        // dd($pageData);
-        return view('appartment.show', $pageData);
+        // dd($data);
        
+        
+        return view('appartment.show', $pageData);
     }
 
     /**
@@ -83,15 +118,22 @@ class AppartmentController extends Controller
     public function edit(string $id)
     {
         //
+        $user = User::find(auth()->user()->id);
+        if (!$user->can('edit apartments')) {
+            toastr()->error('OOPS ! No permissions');
+            return redirect()->back();
+        }
+
         $data = Appartments::find($id);
+        $categories = Categories::all();
 
         $pageData = [
-            'title' => 'EDIT'. $data->name, 
-            'appartment' => $data 
-        
+            'title' => 'EDIT' . $data->name,
+            'appartment' => $data,
+            'categories' => $categories 
+
         ];
         return view('appartment.edit', $pageData);
-     
     }
 
     /**
@@ -100,15 +142,29 @@ class AppartmentController extends Controller
     public function update(Request $request, string $id)
     {
         //
+       
+        $user = User::find(auth()->user()->id);
+        if (!$user->can('create apartments')) {
+            toastr()->error('OOPS ! No permissions');
+            return redirect()->back();
+        }
+        
         $request->validate([
             'name' => 'required',
+            'flatId' => 'required',
+            'category' => 'required',
+            'amount' => 'required'
         ]);
 
-        $data = new Appartments();
+        $data = Appartments::find($id);
         $data->name = $request->name;
+        $data->flats_id = $request->flatId;
+        $data->categories_id = $request->category;
+        $data->amount = $request->amount;
         $data->update();
-        toastr()->success('Successfully updated appartment');
-        return redirect(route('appartment.index'));
+
+        toastr()->success('Successfully updated an appartment');
+        return redirect(route('flat.show', $request->flatId));
     }
 
     /**
@@ -117,6 +173,18 @@ class AppartmentController extends Controller
     public function destroy(string $id)
     {
         //
+        $user = User::find(auth()->user()->id);
+        if (!$user->can('delete apartments')) {
+            toastr()->error('OOPS ! No permissions');
+            return redirect()->back();
+        }
+
+        $data = Appartments::find($id);
+   
+
+        $data->delete();
+        toastr()->success('Successfully deleted appartment');
+        return redirect()->back();
 
     }
 }

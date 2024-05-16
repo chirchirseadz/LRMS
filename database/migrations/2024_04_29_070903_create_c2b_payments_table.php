@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('c2b_payments', function (Blueprint $table) {
             $table->id();
-            $table->integer('tenant_id')->nullable();
+            $table->integer('tenants_id')->nullable();
             $table->string('TransactionType');
             $table->string('TransID');
             $table->string('TransTime');

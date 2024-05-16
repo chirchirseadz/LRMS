@@ -15,7 +15,7 @@
                         <div class="col-sm-12">
                             <form role="form" id="form" action="{{ route('room.store') }}" method="post">
                                 @csrf
-
+                                
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-sm-4">

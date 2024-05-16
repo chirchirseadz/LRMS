@@ -270,6 +270,10 @@
     myDropzone.removeAllFiles(true)
   }
   // DropzoneJS Demo Code End
+
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 </script>
 
 </body>

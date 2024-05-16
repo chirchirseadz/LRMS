@@ -9,7 +9,11 @@ class Categories extends Model
 {
     use HasFactory;
 
-    public function Rooms(){
-        $this->hasMany(Rooms::class);
+    protected $table = 'Categories';
+
+    protected $primary_key = 'id';
+
+    public function Appartments(){
+        $this->hasMany(Appartments::class); 
     }
 }

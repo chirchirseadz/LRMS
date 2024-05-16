@@ -4,7 +4,6 @@
 
     <div class="row m-3">
         <div class="col-md-12 text-right">
-       
          <a  class="btn btn-primary" href="{{route('appartment.create')}}"> <i class="fa fa-plus mr-2" aria-hidden="true"></i>Appartment</a>
         </div>
     </div>
@@ -20,6 +19,9 @@
             <thead>
                 <tr>
                     <th>S/N</th>
+                    <th>NAME</th>
+                    <th>CATEGORY</th>
+                    <th>AMOUNT</th>
                     <th>NAME</th>
                     <th width='40%'>ACTION</th>
                 </tr>

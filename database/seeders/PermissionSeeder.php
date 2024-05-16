@@ -46,11 +46,11 @@ class PermissionSeeder extends Seeder
           Permission::create(['name' => 'edit categories']);
           Permission::create(['name' => 'delete categories']);
   
-          // Rooms Permissions
-          Permission::create(['name' => 'view rooms']);
-          Permission::create(['name' => 'create rooms']);
-          Permission::create(['name' => 'edit rooms']);
-          Permission::create(['name' => 'delete rooms']);
+          // Flats Permissions
+          Permission::create(['name' => 'view flats']);
+          Permission::create(['name' => 'create flats']);
+          Permission::create(['name' => 'edit flats']);
+          Permission::create(['name' => 'delete flats']);
   
           // Payments Permissions
           Permission::create(['name' => 'view payments']);
@@ -69,6 +69,12 @@ class PermissionSeeder extends Seeder
           Permission::create(['name' => 'create rent-details']);
           Permission::create(['name' => 'edit rent-details']);
           Permission::create(['name' => 'delete rent-details']);
+
+          // Rent Details Permissions
+          Permission::create(['name' => 'view landlords']);
+          Permission::create(['name' => 'create landlords']);
+          Permission::create(['name' => 'edit landlords']);
+          Permission::create(['name' => 'delete landlords']);
   
         
     }

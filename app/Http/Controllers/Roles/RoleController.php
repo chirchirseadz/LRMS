@@ -32,6 +32,7 @@ class RoleController extends Controller
         //
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
+        
 
         $pageData = [
             'role' => $role,
@@ -41,7 +42,6 @@ class RoleController extends Controller
 
         return view('roles.show', $pageData);
     }
-
 
 
     /**

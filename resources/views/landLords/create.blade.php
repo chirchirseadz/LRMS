@@ -13,39 +13,17 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form role="form" id="form" action="{{ route('appartment.update', $appartment->id ) }}" method="post">
+                            <form role="form" id="form" action="{{ route('landlord.store') }}" method="post">
                                 @csrf
-                                @method('PATCH')
                                 
                                 <div class="modal-body">
                                     <div class="row">
-                                        <div class="col-sm-4">
-                                            <input type="hidden" name="flatId" value="{{$appartment->flats_id}}">
-                                            <div class="form-group">
-                                                <label for="category_id">Category Name</label>
-                                                <select name="category" id="category" class="form-control select2" id="category_id" required>
-                                                    <option class="mb-1" value="">
-                                                        - Select Category -</option>
-                                                    @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}" {{($appartment->categories_id ==  $category->id) ? 'selected': ''}}  >
-                                                        {{ $category->name }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('category')
-                                                <span class="text text-danger text-sm" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-
-                                        </div>
-
+                                    
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
-                                                <label for="customer_name"> Appartment Name</label>
-                                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter appartment name" autocomplete="off" value="{{$appartment->name}}" required>
-                                                @error('name')
+                                                <label for="full_name">Name</label>
+                                                <input type="text" name="full_name" class="form-control" id="full_name" placeholder="Enter full names" autocomplete="off" value="{{old('full_name')}}" required>
+                                                @error('full_name')
                                                 <span class="text text-danger text-sm" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -55,16 +33,43 @@
                                         </div>                                      
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
-                                                <label for="customer_name">Appartment Cost</label>
-                                                <input type="number" name="amount" class="form-control" id="name" placeholder="Enter appartment cost amount" autocomplete="off" value="{{$appartment->amount}}" required>
-                                                @error('amount')
+                                                <label for="email">Email</label>
+                                                <input type="text" name="email" class="form-control" id="email" placeholder="Enter email address" autocomplete="off" value="{{old('email')}}" required>
+                                                @error('email')
                                                 <span class="text text-danger text-sm" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                                 @enderror
                                             </div>
-                                        </div>
+
+                                        </div>                                      
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="mobile_number">Mobile Number</label>
+                                                <input type="number" name="mobile_number" class="form-control" id="mobile_number" placeholder="Enter mobile number E.g 07xxx" autocomplete="off" value="{{old('mobile_number')}}" required>
+                                                @error('mobile_number')
+                                                <span class="text text-danger text-sm" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
+                                        </div>                                      
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="identification_number">Identification Number</label>
+                                                <input type="number" name="identification_number" class="form-control" id="identification_number" placeholder="Enter identification number " autocomplete="off" value="{{old('identification_number')}}" required>
+                                                @error('identification_number')
+                                                <span class="text text-danger text-sm" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
+                                        </div>                                      
+                                      
                                     </div>
+
                                 </div>
                                 <div class="modal-footer justify-content-between">
                                     <button type="submit" id="submit" class="btn btn-primary"> <i class="fa fa-user-edit"></i>

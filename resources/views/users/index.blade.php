@@ -5,7 +5,7 @@
     <div class="row m-3">
         <div class="col-md-12 text-right">
        
-         <a  class="btn btn-primary" href="{{route('room.create')}}"> <i class="fa fa-plus mr-2" aria-hidden="true"></i>Rooms</a>
+         <a  class="btn btn-primary" href="{{route('user.create')}}"> <i class="fa fa-plus mr-2" aria-hidden="true"></i>user</a>
         </div>
     </div>
 
@@ -21,24 +21,31 @@
                 <tr>
                     <th>S/N</th>
                     <th>NAME</th>
-                    <th width='40%'>ACTION</th>
+                    <th>EMAIL</th>
+                    <th>CREATED AT</th>
+                    <th>UPDATED AT</th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($rooms as $room)
+                @foreach ($users as $user)
                 <tr>
                     <td>NO:</td>
-                    <td>{{$room->name}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                                      
+                    <td>{{date("j F Y", strtotime($user->created_at))}}</td>
+                    <td>{{date("j F Y", strtotime($user->updated_at))}}</td>
                     <td>
                         <div class="margin">
                             <div class="btn-group">
-                                <a href="{{route('room.edit', $room->id)}}">
+                                <a href="{{route('user.edit', $user->id)}}">
                                     <button type="button" class="btn btn-xs btn-default"><i class="fa fa-edit"></i>
                                         Edit</button>
                                 </a>
                             </div>
                             <div class="btn-group">
-                                <a href="{{route('room.show', $room->id)}}">
+                                <a href="{{route('user.show', $user->id)}}">
                                     <button type="button" class="btn btn-xs btn-info"><i class="fa fa-eye"></i>
                                         View</button>
                                 </a>
