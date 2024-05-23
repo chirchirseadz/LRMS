@@ -68,16 +68,6 @@
             </p>
           </a>
         </li>
-
-        <li class="nav-item">
-          <a href="{{route('tenant.index')}}" class="nav-link {{request()->routeIs('tenant*') ? 'active' : ''}}">
-            <i class="nav-icon fa fa-user"></i>
-            <p>
-              Manage Tenants
-            </p>
-          </a>
-        </li>
-
         <li class="nav-item">
           <a href="{{route('landlord.index')}}" class="nav-link {{request()->routeIs('landlord*') ? 'active' : ''}}">
             <i class="nav-icon fa fa-user-circle"></i>
@@ -97,8 +87,29 @@
         </li>
 
         <li class="nav-item">
-          <a href="{{route('cash.index')}}" class="nav-link {{request()->routeIs('cash*') ? 'active' : ''}}">
+          <a href="{{route('tenant.index')}}" class="nav-link {{request()->routeIs('tenant*') ? 'active' : ''}}">
+            <i class="nav-icon fa fa-user"></i>
+            <p>
+              Manage Tenants
+            </p>
+          </a>
+        </li>
+
+
+      
+
+        <li class="nav-item">
+          <a href="{{route('rent_details.index')}}" class="nav-link {{request()->routeIs('rent_details*') ? 'active' : ''}}">
             <i class="nav-icon fa fa-building"></i>
+            <p>
+             Rent Details
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{route('cash.index')}}" class="nav-link {{request()->routeIs('cash*') ? 'active' : ''}}">
+          <i class="fa fa-credit-card"></i>
             <p>
              Cash Payments
             </p>

@@ -20,16 +20,18 @@
             <thead>
                 <tr>
                     <th>S/N</th>
+                    <th>NAME</th>
                     <th>AMOUNT</th>
                     <th>PAYMENT DATE</th>
-                    <th>ACTION BY</th>
+                    <!-- <th>ACTION BY</th> -->
                     <th>ACTION</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($cashPayments as $cash)
                 <tr>
-                    <td>NO:</td>
+                <td>{{ $loop->iteration }}</td>
+                    <td>{{$cash->Tenants->name}}</td>                                   
                     <td>{{$cash->amount}}</td>                                   
                     <td>{{date("j F Y", strtotime($cash->payment_date))}}</td>
                     
@@ -44,23 +46,21 @@
                             </div>
                             @endcan
 
-                            @can('view payments')
+                            <!-- @can('view payments')
                             <div class="btn-group">
                                 <a href="{{route('cash.show', $cash->id)}}">
                                     <button type="button" class="btn btn-xs btn-info"><i class="fa fa-eye"></i>
                                         View</button>
                                 </a>
                             </div>
-                            @endcan
+                            @endcan -->
 
-                            @can('delete payments')
-                          
+                            @can('delete payments')                
                            <div class="btn-group">
                                 <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete" type="submit" class="btn btn-xs btn-danger "><i class="fa fa-trash"></i>
                                     delete</button>
 
                             </div>
-                
                            @endcan
                         </div>
                     </td>

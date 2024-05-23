@@ -46,7 +46,7 @@
     <!-- ./col -->
     <div class="col-lg-3 col-sm-6">
         <!-- small box -->
-        <div class="small-box bg-success">
+        <div class="small-box bg-secondary">
             <div class="inner">
                 <p>Flats</p>
             </div>
@@ -83,6 +83,38 @@
                <i class="fa fa-money-bill"></i>
             </div>
             <a href="{{route('cash.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+   
+   
+    <!-- ./col -->
+    <!-- ./col -->
+    <div class="col-lg-3 col-sm-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <p>Mpesa transactions</p>
+            </div>
+            <div class="icon">
+               <i class="fa fa-money-bill"></i>
+            </div>
+            <a href="{{route('allMpesaTransactions')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+   
+   
+    <!-- ./col -->
+    <!-- ./col -->
+    <div class="col-lg-3 col-sm-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <p>Rent Details</p>
+            </div>
+            <div class="icon">
+               <i class="fa fa-money-bill"></i>
+            </div>
+            <a href="{{route('rent_details.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
    

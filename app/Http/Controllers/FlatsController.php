@@ -24,6 +24,9 @@ class FlatsController extends Controller
             'title' => 'flats List',
             'flats' => $flats
         ];
+
+        // dd($pageData);
+       
         return view('flats.index', $pageData);
     }
 
@@ -47,7 +50,6 @@ class FlatsController extends Controller
             'landlords' => $landlords
 
         ];
-
 
         return view('flats.create', $pageData);
     }
@@ -74,6 +76,8 @@ class FlatsController extends Controller
             'location' => 'required',
 
         ]);
+
+
 
         $data = new Flats();
         $data->name = $request->name;
@@ -123,7 +127,8 @@ class FlatsController extends Controller
         }
 
 
-        $flat = Flats::find($id);
+        $flat = Flats::with('LandLord')->find($id);
+
         $landlords = LandLord::all();
         $pageData = [
             'title' => 'flat Edit Page',
@@ -132,13 +137,15 @@ class FlatsController extends Controller
 
         ];
 
+        // dd($pageData);
+
         return view('flats.edit', $pageData);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
 
         // dd($request);
@@ -158,9 +165,9 @@ class FlatsController extends Controller
 
         ]);
 
-        $data = new Flats();
+        $data = Flats::find($id);
         $data->name = $request->name;
-        $data->landlord_id = $request->landlord_id;
+        $data->land_lord_id = $request->landlord_id;
         $data->location = $request->location;
         $data->update();
 

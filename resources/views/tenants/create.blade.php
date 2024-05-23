@@ -97,6 +97,20 @@
                                             </div>
 
                                         </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <!-- Form with Select2 -->
+                                                <div class="form-group">
+                                                    <label for="tenantSelect">Tenant</label>
+                                                    <select id="tenantSelect" name="tenant_id" class="form-control select2" style="width: 100%;">
+                                                        <option value="">Select Appartment</option>
+                                                        @foreach ($appartments as $appartment )
+                                                        <option value="{{$appartment->id}}">{{$appartment->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     </div>
 

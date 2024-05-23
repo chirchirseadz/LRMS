@@ -45,7 +45,7 @@
                                        <div class="form-group">
                                             <label for="landlord_id">Landlord Name</label>
                                             <select name="landlord_id" id="landlord_id" class="form-control select2 text-dark" required>
-                                                <option value="{{ $flat->LandLord->id }}">{{ $flat->LandLord->full_name }}</option>
+                                                <option value="{{$flat->LandLord->full_name }}</option>
                                                 @foreach ($landlords as $landlord)
                                                 <option value="{{ $landlord->id }}">
                                                    <span class="text-dark"> {{ $landlord->full_name }}</span>

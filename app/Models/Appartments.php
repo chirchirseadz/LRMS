@@ -9,10 +9,10 @@ class Appartments extends Model
 {
     use HasFactory;
 
-    // protected $table = 'appartments';
-    // protected $primary_key = 'id';
+    protected $table = 'appartments';
+    protected $primary_key = 'id';
 
-    public function Flat() {
+    public function Flats() {
         return $this->belongsTo(Flats::class);
     }
     public function Categories (){
@@ -25,7 +25,5 @@ class Appartments extends Model
     public function landlord() {
         $this->belongsTo(LandLord::class);
     }
-
-
 
 }

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class C2bPayments extends Model
+class AssignTransaction extends Model
 {
     use HasFactory;
-    public function TenantPayments()
-    {
-        return $this->hasMany(AssignTransaction::class, 'c2b_payments_id');
+
+    public function C2bPayments() {
+        $this->belongsTo(C2bPayments::class);
     }
 }

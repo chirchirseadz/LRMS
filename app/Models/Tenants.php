@@ -27,7 +27,9 @@ class Tenants extends Model
     public function Appartments(){
         return $this->hasOne(Appartments::class);
     }
- 
+
+
+
 
     public function Flat() {
         $this->belongsTo(Flats::class);

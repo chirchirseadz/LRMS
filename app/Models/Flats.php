@@ -22,7 +22,6 @@ class Flats extends Model
         return $this->belongsTo(LandLord::class);
     }
      
-
     public function Tenants() {
         return $this->hasMany(Tenants::class);
     }

@@ -4,118 +4,119 @@
 
 <!-- Main content -->
 <section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4 offset-3">
-        <!-- Profile Image -->
-        <div class="card card-primary card-outline">
-          <div class="card-body box-profile">
-            <div class="text-center">
-              <img class="profile-user-img img-fluid img-circle" src="{{ asset('../../dist/img/user4-128x128.jpg') }}" alt="User profile picture">
-            </div>
-
-            <h3 class="profile-username text-center">{{ $user->name }}</h3>
-
-            <p class="text-muted text-center">{{ $user->email }}</p>
-
-            <a href="{{ route('user.show', $user->id) }}" class="btn btn-primary btn-block"><i class="fas fa-eye mr-1"></i> <b>Show</b></a>
-          </div>
-          <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-      </div>
-      
-    </div>
-    <div class="row">
-    <div class="col-md-12">
-        <!-- About Me Box -->
+    <div class="container-fluid">
         <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-bars mr-1"></i>Edit Details</h3>
-          </div>
-          <!-- /.card-header -->
-          <form action="{{ route('user.update', $user->id) }}" method="post">
-            @csrf
-            @method('PUT')
+            <div class="card-header">
+                <h3 class="card-title"><i class="fa fa-user-edit"></i> {{ $title }}</h3>
+            </div>
             <div class="card-body">
-              <div class="form-group">
-                <label for="exampleInputPassword1">Name</label>
-                <input type="text" name="name" value="{{ $user->name }}" class="form-control" id="exampleInputPassword1" placeholder="Enter name">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" name="email" value="{{ $user->email }}" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label>Select Role</label><br>
-                <div class="row">
-                  @foreach($roles as $role)
-                  <div class="col-md-3">
-                    <label>
-                      <input type="checkbox" name="roles[]" value="{{ $role->name }}" {{ $user->hasRole($role) ? 'checked' : '' }}>
-                      {{ $role->name }}
-                    </label>
-                  </div>
-                  @endforeach
-                </div>
-                <hr>
-                @error('roles')
-                <span class="text text-danger text-sm" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-              </div>
-              <div class="form-group">
-                <label>Select Permissions</label><br>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="checkAllPermissions">
-                  <label class="form-check-label" for="checkAllPermissions">Check All</label>
-                </div>
-                <hr>
-                <div class="row">
-                  @foreach ($permissions as $permission)
-                  <div class="col-md-3">
-                    <div class=" form-check">
-                      <input class="form-check-input" type="checkbox" name="permissions[]" value="{{ $permission->name }}" {{ in_array($permission->name, $userPermissions) ? 'checked' : '' }}>
-                      <label class="form-check-label">
-                        {{ $permission->name }}
-                      </label>
-                      <hr>
-                    </div>
-                  </div>
-                  @endforeach
-                </div>
-              </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form role="form" id="form" action="{{ route('tenant.update', $tenant->id) }}" method="post">
+                                @csrf
+                                @method('PUT')
 
-              <button class="btn btn-primary" type="submit">Submit</button>
+                                <div class="modal-body">
+                                    <div class="row">
+
+                                        <input type="hidden" name="appartment_id" value="{{$appartmentId}}">
+                                        @error('appartment_id')
+                                        <span class="text text-danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="customer_name">Tenant Name</label>
+                                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter tenant name" autocomplete="off" value="{{$tenant->name}}" required>
+                                                @error('name')
+                                                <span class="text text-danger text-sm" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="customer_email">Tenant Email</label>
+                                                <input type="text" name="email" class="form-control" id="name" placeholder="Enter tenant email" autocomplete="off" value="{{$tenant->email}}" required>
+                                                @error('email')
+                                                <span class="text text-danger text-sm" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="customer_name">Mobile Number</label>
+                                                <input type="number" name="mobile_number" class="form-control" id="name" placeholder="Enter mobile number" autocomplete="off" value="{{$tenant->mobile_number}}" required>
+                                                @error('mobile_number')
+                                                <span class="text text-danger text-sm" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="customer_name">ID Number</label>
+                                                <input type="number" name="id_number" class="form-control" id="name" placeholder="Enter ID number" autocomplete="off" value="{{$tenant->id_number}}" required>
+                                                @error('id_number')
+                                                <span class="text text-danger text-sm" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="customer_name">Tenant Address</label>
+                                                <input type="text" name="address" class="form-control" id="name" placeholder="Enter tenant address" autocomplete="off" value="{{$tenant->address}}" required>
+                                                @error('address')
+                                                <span class="text text-danger text-sm" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="customer_name">Tenant Occupation</label>
+                                                <input type="text" name="occupation" class="form-control" id="name" placeholder="Enter tenant occupation" autocomplete="off" value="{{$tenant->occupation}}" required>
+                                                @error('occupation')
+                                                <span class="text text-danger text-sm" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="submit" id="submit" class="btn btn-primary"> <i class="fa fa-user-edit"></i>
+                                        Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.card-body -->
-          </form>
         </div>
         <!-- /.card -->
-      </div>
-    </div>
-    <!-- /.row -->
-  </div><!-- /.container-fluid -->
+    </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
 
+
 @endsection
-@push('scripts')
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var checkAllPermissions = document.getElementById('checkAllPermissions');
-
-    checkAllPermissions.addEventListener('click', function() {
-      var checkboxes = document.querySelectorAll('input[ type="checkbox"][name="permissions[]"]');
-      var isChecked = checkAllPermissions.checked;
-
-      checkboxes.forEach(function(checkbox) {
-        checkbox.checked = isChecked;
-      })
-
-    })
-  })
-</script>
-@endpush
-
