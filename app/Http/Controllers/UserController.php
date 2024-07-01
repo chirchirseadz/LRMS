@@ -5,18 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+  
     public function index()
     {
         //
-        $users = User::all();
+        $users = User::paginate(10);
         $pageData = [
             'title' => 'Users List',
             'users' => $users,
@@ -39,6 +44,21 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->back()->with('success', 'User added successfully');
+
+
     }
 
     /**
@@ -46,13 +66,10 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
 
-        $auth_user = User::find(auth()->user()->id);
-        if (!$auth_user->can('view users')) {
-            toastr()->error('OOPS ! No permissions');
-            return redirect(route('user.index',));
-      }
+        // if (!Auth::user()->can('view users')) {
+        //     return redirect()->back()->with('error', env('PERMISSION_ERROR_MESSAGE'));
+        // }
 
         $user = User::find($id);
         $roles = $user->getRoleNames();
@@ -75,10 +92,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $auth_user = User::find(auth()->user()->id);
-        if (!$auth_user->can('edit users')) {
-            toastr()->error('OOPS ! No permissions');
-            return redirect(route('user.index'));
+       
+        if (!Auth::user()->can('edit users')) {
+            return redirect()->back()->with('error', env('PERMISSION_ERROR_MESSAGE'));
         }
         $user = User::find($id);
 
@@ -105,11 +121,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $auth_user = User::find(auth()->user()->id);
-        if (!$auth_user->can('edit users')) {
-            toastr()->error('OOPS ! No permissions');
-            return redirect(route('user.index'));
-        }
+       User::checkPermission('edit users');
     
         $request->validate([
             'name' => 'required',
@@ -133,8 +145,8 @@ class UserController extends Controller
     
         $user->name = $request->name;
         $user->email = $request->email;
+        
         $user->save();
-    
         toastr()->success('Successfully updated a user');
     
         return redirect(route('user.edit', $user->id));
@@ -145,14 +157,15 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
         //
-
         $auth_user = User::find(auth()->user()->id);
         if (!$auth_user->can('delete users')) {
             toastr()->error('OOPS ! No permissions');
             return redirect(route('user.index'));
         }
+        $user->delete();
+        toastr()->success('User deleted successfully');
     }
 }

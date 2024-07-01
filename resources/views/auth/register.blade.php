@@ -6,7 +6,7 @@
   <div class="register-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="/" class="h1"><b class="text-secondary">RMS </b>SIGN UP</a>
+      <a href="/" class="h1"><b class="text-secondary">HMS </b>SIGN UP</a>
     </div>
     <div class="card-body">
     <form method="post" action="{{ route('register') }}">

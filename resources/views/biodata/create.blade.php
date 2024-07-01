@@ -13,28 +13,16 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form role="form" id="form" action="{{ route('rent_details.store') }}" method="post">
+                            <form role="form" id="form" action="{{ route('room.store') }}" method="post">
                                 @csrf
                                 
                                 <div class="modal-body">
                                     <div class="row">
-                                       
-                                        <div class="col-md-6 col-sm-12">
+                                                                    
+                                        <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
-                                                <label for="customer_name"> Rent Name</label>
-                                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter rent detail name E.g Rents For March" autocomplete="off" value="{{old('name')}}" required>
-                                                @error('name')
-                                                <span class="text text-danger text-sm" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-
-                                        </div>                                      
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label for="customer_name">Overdue Date</label>
-                                                <input type="date" name="overdue_date" class="form-control" id="overdue_date" placeholder="Enter overdue date" autocomplete="off" value="{{old('overdue_date')}}" required>
+                                                <label for="customer_name">Room Cost</label>
+                                                <input type="number" name="amount" class="form-control" id="name" placeholder="Enter room cost amount" autocomplete="off" value="{{old('amount')}}" required>
                                                 @error('amount')
                                                 <span class="text text-danger text-sm" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -42,7 +30,11 @@
                                                 @enderror
                                             </div>
                                         </div>
+
+
+
                                     </div>
+
                                 </div>
                                 <div class="modal-footer justify-content-between">
                                     <button type="submit" id="submit" class="btn btn-primary"> <i class="fa fa-user-edit"></i>

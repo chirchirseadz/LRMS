@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Roksta\Toastr\Toastr;
 use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable
 {
@@ -43,6 +45,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function checkPermission($permission){
+        $userId = auth()->user()->id;
+        $user = User::find($userId);
+        if (!$user->can($permission)) {  
+            return redirect()->back()->with('error', 'No permissions');
+        }
+       
+    }
+
+  
 
 
 }

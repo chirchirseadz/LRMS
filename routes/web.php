@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppartmentController;
+use App\Http\Controllers\bioDataController;
 use App\Http\Controllers\CashPaymentController;
 use App\Http\Controllers\LandLordController;
 use App\Http\Controllers\ProfileController;
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -49,13 +50,13 @@ Route::controller(RoleController::class)->group( function () {
     Route::put('/roles/{id}/update/', 'update')->name('roles.update');
 })->middleware('auth');
 
-Route::resource('appartment', AppartmentController::class)->middleware('auth');
-Route::resource('flat', FlatsController::class)->middleware('auth');
+
+
 Route::resource('user', UserController::class)->middleware('auth');
-Route::resource('landlord', LandLordController::class)->middleware('auth');
-Route::resource('tenant', TenantController::class)->middleware('auth');
 Route::resource('cash', CashPaymentController::class)->middleware('auth');
-Route::resource('rent_details', RentDetailsController::class)->middleware('auth');
+
+Route::resource('bioData', bioDataController::class)->middleware('auth');
+
 
 
 

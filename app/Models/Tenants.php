@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tenants extends Model
 {
-    protected $table = 'tenants';
-    protected $primary_key = 'id';
 
     use HasFactory;
 
@@ -25,7 +23,7 @@ class Tenants extends Model
     }
 
     public function Appartments(){
-        return $this->hasOne(Appartments::class);
+        return $this->belongsTo(Appartments::class);
     }
 
 

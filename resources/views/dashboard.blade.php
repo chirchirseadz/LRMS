@@ -29,33 +29,6 @@
             <a href="{{route('user.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-sm-6">
-        <!-- small box -->
-        <div class="small-box bg-danger">
-            <div class="inner">
-
-                <p>Land lords</p>
-            </div>
-            <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="{{route('landlord.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-sm-6">
-        <!-- small box -->
-        <div class="small-box bg-secondary">
-            <div class="inner">
-                <p>Flats</p>
-            </div>
-            <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="{{route('flat.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
    
    
     <!-- ./col -->
@@ -64,12 +37,12 @@
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
-                <p>Tenants</p>
+                <p>Bio Data</p>
             </div>
             <div class="icon">
                 <i class="fa fa-users"></i>
             </div>
-            <a href="{{route('tenant.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -102,22 +75,7 @@
         </div>
     </div>
    
-   
-    <!-- ./col -->
-    <!-- ./col -->
-    <div class="col-lg-3 col-sm-6">
-        <!-- small box -->
-        <div class="small-box bg-warning">
-            <div class="inner">
-                <p>Rent Details</p>
-            </div>
-            <div class="icon">
-               <i class="fa fa-money-bill"></i>
-            </div>
-            <a href="{{route('rent_details.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-   
+
    
     <!-- ./col -->
 </div>

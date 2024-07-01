@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Roles;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role ;
@@ -30,6 +31,13 @@ class RoleController extends Controller
     public function show(string $id)
     {
         //
+        $user = User::find(auth()->user()->id);
+
+        if (!$user->can('view roles')) {
+            toastr()->error('OOPS ! No permissions');
+            return redirect()->back();
+        }
+        
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
         

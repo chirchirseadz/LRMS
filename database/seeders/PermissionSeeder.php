@@ -20,61 +20,87 @@ class PermissionSeeder extends Seeder
           Permission::create(['name' => 'create users']);
           Permission::create(['name' => 'edit users']);
           Permission::create(['name' => 'delete users']);
+
+           // Roles Permissions
+          Permission::create(['name' => 'view roles']);
+          Permission::create(['name' => 'create roles']);
+          Permission::create(['name' => 'edit roles']);
+          Permission::create(['name' => 'delete roles']);
+          
+           // bioData Permissions
+          Permission::create(['name' => 'view bioData']);
+          Permission::create(['name' => 'create bioData']);
+          Permission::create(['name' => 'edit bioData']);
+          Permission::create(['name' => 'delete bioData']);
+          
+           // opdCash Permissions
+          Permission::create(['name' => 'view opdCash']);
+          Permission::create(['name' => 'create opdCash']);
+          Permission::create(['name' => 'edit opdCash']);
+          Permission::create(['name' => 'delete opdCash']);
+
+           // opdCorporate Permissions
+          Permission::create(['name' => 'view opdCorporate']);
+          Permission::create(['name' => 'create opdCorporate']);
+          Permission::create(['name' => 'edit opdCorporate']);
+          Permission::create(['name' => 'delete opdCorporate']);
+          
+           // opdCopay Permissions
+          Permission::create(['name' => 'view opdCopay']);
+          Permission::create(['name' => 'create opdCopay']);
+          Permission::create(['name' => 'edit opdCopay']);
+          Permission::create(['name' => 'delete opdCopay']);
+          
+           // selfRequest Permissions
+          Permission::create(['name' => 'view selfRequest']);
+          Permission::create(['name' => 'create selfRequest']);
+          Permission::create(['name' => 'edit selfRequest']);
+          Permission::create(['name' => 'delete selfRequest']);
+          
+           // vitals Permissions
+          Permission::create(['name' => 'view vitals']);
+          Permission::create(['name' => 'create vitals']);
+          Permission::create(['name' => 'edit vitals']);
+          Permission::create(['name' => 'delete vitals']);
+          
+           // hypertension Permissions
+          Permission::create(['name' => 'view hypertension']);
+          Permission::create(['name' => 'create hypertension']);
+          Permission::create(['name' => 'edit hypertension']);
+          Permission::create(['name' => 'delete hypertension']);
+          
+           // opdDischarge Permissions
+          Permission::create(['name' => 'view opdDischarge']);
+          Permission::create(['name' => 'create opdDischarge']);
+          Permission::create(['name' => 'edit opdDischarge']);
+          Permission::create(['name' => 'delete opdDischarge']);
+          
+           // receipts Permissions
+          Permission::create(['name' => 'view receipts']);
+          Permission::create(['name' => 'create receipts']);
+          Permission::create(['name' => 'edit receipts']);
+          Permission::create(['name' => 'delete receipts']);
+          
+           // invoice Permissions
+          Permission::create(['name' => 'view invoice']);
+          Permission::create(['name' => 'create invoice']);
+          Permission::create(['name' => 'edit invoice']);
+          Permission::create(['name' => 'delete invoice']);
+
+           // otherIncome Permissions
+          Permission::create(['name' => 'view otherIncome']);
+          Permission::create(['name' => 'create otherIncome']);
+          Permission::create(['name' => 'edit otherIncome']);
+          Permission::create(['name' => 'delete otherIncome']);
+          
+           // otherIncome Permissions
+          Permission::create(['name' => 'view otherIncome']);
+          Permission::create(['name' => 'create otherIncome']);
+          Permission::create(['name' => 'edit otherIncome']);
+          Permission::create(['name' => 'delete otherIncome']);
           
   
-          //  Role permisions
-          Permission::create(['name' => 'view role']);
-          Permission::create(['name' => 'create role']);
-          Permission::create(['name' => 'edit role']);
-          Permission::create(['name' => 'delete role']);
-  
-          // Tenants Permissions
-          Permission::create(['name' => 'view tenants']);
-          Permission::create(['name' => 'create tenants']);
-          Permission::create(['name' => 'edit tenants']);
-          Permission::create(['name' => 'delete tenants']);
-  
-          // Apartments Permissions
-          Permission::create(['name' => 'view apartments']);
-          Permission::create(['name' => 'create apartments']);
-          Permission::create(['name' => 'edit apartments']);
-          Permission::create(['name' => 'delete apartments']);
-  
-          // Categories Permissions
-          Permission::create(['name' => 'view categories']);
-          Permission::create(['name' => 'create categories']);
-          Permission::create(['name' => 'edit categories']);
-          Permission::create(['name' => 'delete categories']);
-  
-          // Flats Permissions
-          Permission::create(['name' => 'view flats']);
-          Permission::create(['name' => 'create flats']);
-          Permission::create(['name' => 'edit flats']);
-          Permission::create(['name' => 'delete flats']);
-  
-          // Payments Permissions
-          Permission::create(['name' => 'view payments']);
-          Permission::create(['name' => 'create payments']);
-          Permission::create(['name' => 'edit payments']);
-          Permission::create(['name' => 'delete payments']);
-  
-          // Rent Details Permissions
-          Permission::create(['name' => 'view mpesa-transactions']);
-          Permission::create(['name' => 'create mpesa-transactions']);
-          Permission::create(['name' => 'edit mpesa-transactions']);
-          Permission::create(['name' => 'delete mpesa-transactions']);
-  
-          // Rent Details Permissions
-          Permission::create(['name' => 'view rent-details']);
-          Permission::create(['name' => 'create rent-details']);
-          Permission::create(['name' => 'edit rent-details']);
-          Permission::create(['name' => 'delete rent-details']);
-
-          // Rent Details Permissions
-          Permission::create(['name' => 'view landlords']);
-          Permission::create(['name' => 'create landlords']);
-          Permission::create(['name' => 'edit landlords']);
-          Permission::create(['name' => 'delete landlords']);
+         
   
         
     }

@@ -20,16 +20,16 @@
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
-                                                <label for="tenant_id">Tenant Name</label>
-                                                <select name="tenant_id" id="select" class="form-control select2bs4" required>
-                                                    <option value="">- Select tenant -</option>
-                                                    @foreach ($tenants as $tenant)
-                                                    <option value="{{ $tenant->id }}" @if(old('tenant_id')==$tenant->id) selected @endif>
-                                                        {{ $tenant->name }} ({{ $tenant->email }})
+                                                <label for="patient_id">patient Name</label>
+                                                <select name="patient_id" id="select" class="form-control select2bs4" required>
+                                                    <option value="">- Select patient -</option>
+                                                    @foreach ($patients as $patient)
+                                                    <option value="{{ $patient->id }}" @if(old('patient_id')==$patient->id) selected @endif>
+                                                        {{ $patient->name }} ({{ $patient->email }})
                                                     </option>
                                                     @endforeach
                                                 </select>
-                                                @error('tenant_id')
+                                                @error('patient_id')
                                                 <span class="text text-danger text-sm" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

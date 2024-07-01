@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+  <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 </head>
@@ -80,6 +83,8 @@
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 <!-- DataTables  & Plugins -->
 <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -97,24 +102,85 @@
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 
 
-<!-- Page specific script -->
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "print"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+        $(function() {
+               $("#table1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "bPaginate": false,
+                "paging": false,
+                "bFilter": false,
+                "bInfo": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#table1_wrapper .col-md-6:eq(0)');
+
+            $("#table2").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "bPaginate": false,
+                "paging": false,
+                "bFilter": false,
+                "bInfo": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#table2_wrapper .col-md-6:eq(0)');
+
+            $("#table3").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                 "bPaginate": false,
+                "paging": false,
+                "bFilter": false,
+                "bInfo": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#table3_wrapper .col-md-6:eq(0)');
+
+            $("#table4").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                 "bPaginate": false,
+                "paging": false,
+                "bFilter": false,
+                "bInfo": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#table4_wrapper .col-md-6:eq(0)');
+
+            $("#table5").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                 "bPaginate": false,
+                "paging": false,
+                "bFilter": false,
+                "bInfo": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#table5_wrapper .col-md-6:eq(0)');
+
+            $("#table6").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                 "bPaginate": false,
+                "paging": false,
+                "bFilter": false,
+                "bInfo": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#table6_wrapper .col-md-6:eq(0)');
+
+        });
+
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    </script>
+
 </body>
 </html>
 
